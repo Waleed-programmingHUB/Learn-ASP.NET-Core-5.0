@@ -1,0 +1,87 @@
+﻿@*Import the Model Base Print data Design*@ 
+@model IEnumerable<RazorView_ASPNET.Models.StudentModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-6">   
+        <div class="text-center">
+            <h1 class="display-4">Welcome</h1>
+            <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+        </div>
+    </div>
+    <div class="col-md-6">
+        @using (Html.BeginForm())
+        {
+        <p class="form-inline my-1">
+                 Search : @Html.TextBox("SearchText")
+                <button class="btn btn-sm btn-outline-success my-2 my-sm-0 mx-1" type="submit">Search</button>
+        </p>
+
+        }
+        
+    </div>
+</div>
+
+<table class="table" style="font-family:'Adobe Myungjo Std';">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.roll_number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.subjects)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.class_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    @if (Model.Count() > 0)
+        {
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.roll_number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.subjects)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.class_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfBirth)
+                </td>
+                <td>
+                    @*Edit Record*@
+                    <a asp-action="Index" asp-controller="Student" asp-route-roll_number='@item.roll_number' class="btn btn-sm btn-outline-info">Update</a>
+                    @*Delete Record*@
+                    <a asp-action="DeleteStudent" asp-controller="Student" asp-route-roll_number='@item.roll_number' class="btn btn-sm btn-outline-danger">Delete</a>   @*Delete Record*@
+                    @*Report Generate*@
+                    <a asp-action="ReportGenerate" asp-controller="Home" class="btn btn-sm btn-outline-success">Print Report</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+        }
+        else
+        {
+        <div class="alert alert-warning alert-dismissible">No Data in the Database</div>
+        }
+ </table>

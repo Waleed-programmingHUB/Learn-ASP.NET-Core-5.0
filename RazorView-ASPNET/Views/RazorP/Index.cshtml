@@ -1,0 +1,46 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@* 
+-- Learning Razor Syntax 
+-- This is a C# Code in Razor Page  
+*@
+<h1>Razor View Page Content</h1>
+<p>Your System Current Time is @DateTime.Now</p>
+@{
+    // CSharp Code here
+    string[] lang =
+    {
+        "C++/C",
+        "C# ASP.NET Core",
+        "Php",
+        "Java",
+        "HTML CSS3 Javascript"
+    };
+    foreach (var item in lang)
+    {
+        <p>@item</p>
+    }
+    int a = 1;
+    while (a < 20)
+    {
+        <h2>@a</h2>
+        a++;
+        if (a == 20)
+        {
+            <h3>Loop is break</h3>
+        }
+    }
+    int i = 1;
+    int mul = a * i;
+    for (i = 1; i < 11; i++)
+    {
+        <h5>@a x @i = @mul</h5>
+        if (i == 10)
+        {
+            <h2>Table is Printed</h2>
+        }
+    }
+ 
+
+}

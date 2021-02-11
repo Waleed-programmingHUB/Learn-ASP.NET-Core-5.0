@@ -1,0 +1,52 @@
+﻿@model RazorView_ASPNET.Models.StudentModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@* 
+    --- Form for Edit Update and Insert Page 
+*@
+<h4>Student Apply form</h4>
+<p>ASP.NET Core Validations</p>
+<hr />
+<div class="row" style="font-family:sans-serif;">
+    <div class="col-md-4">
+        <form asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="hidden" asp-for="roll_number" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="name" class="control-label"></label>
+                <input asp-for="name" class="form-control" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="subjects" class="control-label"></label>
+                <input asp-for="subjects" class="form-control" />
+                <span asp-validation-for="subjects" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="class_name" class="control-label"></label>
+                <input asp-for="class_name" class="form-control" />
+                <span asp-validation-for="class_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOfBirth" class="control-label"></label>
+                <input asp-for="DateOfBirth" class="form-control" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Apply to Add" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to Page</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
